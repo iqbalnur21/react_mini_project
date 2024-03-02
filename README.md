@@ -1,4 +1,3 @@
-
 # React + Vite User Management App
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
@@ -21,24 +20,15 @@ This is a simple user management app that interacts with the Regres API to displ
 <pre></span></div><div class="p-4 overflow-y-auto"><code class="!whitespace-pre hljs language-bash">git clone https://github.com/username/react-vite-user-management.git
 </code></div></div></pre>
 
-`git clone https://github.com/username/react-vite-user-management.git
-`
-
 2. Navigate to the project directory:
 
 <pre></span></div><div class="p-4 overflow-y-auto"><code class="!whitespace-pre hljs language-bash">cd react-vite-user-management
 </code></div></div></pre>
 
-`cd react-vite-user-management
-`
-
 3. Install dependencies:
 
 <pre></span></div><div class="p-4 overflow-y-auto"><code class="!whitespace-pre hljs language-bash">npm install
 </code></div></div></pre>
-
-`npm install
-`
 
 ## Usage
 
@@ -46,9 +36,6 @@ This is a simple user management app that interacts with the Regres API to displ
 
 <pre></span></div><div class="p-4 overflow-y-auto"><code class="!whitespace-pre hljs language-bash">npm run dev
 </code></div></div></pre>
-
-`npm run dev
-`
 
 2. Open your browser and navigate to `http://localhost:3000` to view the app.
 
