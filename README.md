@@ -17,12 +17,11 @@ This is a simple user management app that interacts with the Regres API to displ
 
 1. Clone the repository:
 
-<pre></span></div><div class="p-4 overflow-y-auto"><code class="!whitespace-pre hljs language-bash">git clone https://github.com/username/react-vite-user-management.git
-</code></div></div></pre>
+<pre></span></div><div class="p-4 overflow-y-auto"><code class="!whitespace-pre hljs language-bash">git clone https://github.com/iqbalnur21/react_mini_project.git</code></div></div></pre>
 
 2. Navigate to the project directory:
 
-<pre></span></div><div class="p-4 overflow-y-auto"><code class="!whitespace-pre hljs language-bash">cd react-vite-user-management
+<pre></span></div><div class="p-4 overflow-y-auto"><code class="!whitespace-pre hljs language-bash">cd react-mini-project
 </code></div></div></pre>
 
 3. Install dependencies:
