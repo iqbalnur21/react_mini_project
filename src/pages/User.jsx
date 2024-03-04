@@ -5,14 +5,19 @@ import { Link, useNavigate } from "react-router-dom";
 const User = () => {
   const navigate = useNavigate();
 
+  const [currentPage, setCurrentPage] = useState(1);
+  const [totalPages, setTotalPages] = useState(1);
+
   const [notif, setNotif] = useState("");
   const [users, setUsers] = useState("");
 
-  const getMenu = () => {
+  const getMenu = (page = 1) => {
     axios
-      .get("https://reqres.in/api/users?per_page=3")
+      .get(`https://reqres.in/api/users?per_page=3&page=${page}`)
       .then((res) => {
         setUsers(res.data.data);
+        setTotalPages(res.data.total_pages);
+        setCurrentPage(page);
       })
       .catch((err) => console.log(err));
   };
@@ -20,6 +25,21 @@ const User = () => {
   useEffect(() => {
     getMenu();
   }, []);
+  const goToPage = (page) => {
+    getMenu(page);
+  };
+
+  const goToNextPage = () => {
+    if (currentPage < totalPages) {
+      getMenu(currentPage + 1);
+    }
+  };
+
+  const goToPrevPage = () => {
+    if (currentPage > 1) {
+      getMenu(currentPage - 1);
+    }
+  };
 
   const handleLogout = () => {
     localStorage.removeItem("access_token");
@@ -46,33 +66,53 @@ const User = () => {
                     {notif}
                   </div>
                 )}
-                {!!users && users.map((user) => (
-                  <div className="card p-3 my-3" key={user.id}>
-                    <div className="d-flex align-items-center">
-                      <div className="image">
-                        <img
-                          src={user.avatar}
-                          className="rounded"
-                          width="100"
-                        />
-                      </div>
-                      <div className="ml-3 w-100">
-                        <h4 className="mb-0 mt-0">
-                          {user.first_name + user.last_name}
-                        </h4>
-                        <span>{user.email}</span>
+                {!!users &&
+                  users.map((user) => (
+                    <div className="card p-3 my-3" key={user.id}>
+                      <div className="d-flex align-items-center">
+                        <div className="image">
+                          <img
+                            src={user.avatar}
+                            className="rounded"
+                            width="100"
+                          />
+                        </div>
+                        <div className="ml-3 w-100">
+                          <h4 className="mb-0 mt-0">
+                            {user.first_name + user.last_name}
+                          </h4>
+                          <span>{user.email}</span>
 
-                        <div className="button mt-2 align-items-center">
-                          <Link to={`/user/${user.id}`}>
-                            <button className="btn btn-sm btn-outline-primary">
-                              Detail
-                            </button>
-                          </Link>
+                          <div className="button mt-2 align-items-center">
+                            <Link to={`/user/${user.id}`}>
+                              <button className="btn btn-sm btn-outline-primary">
+                                Detail
+                              </button>
+                            </Link>
+                          </div>
                         </div>
                       </div>
                     </div>
+                  ))}
+                <div className="d-flex justify-content-between align-items-center mt-3">
+                  <button
+                    className="btn btn-sm btn-outline-primary"
+                    onClick={goToPrevPage}
+                    disabled={currentPage === 1}
+                  >
+                    Previous
+                  </button>
+                  <div>
+                    Page {currentPage} of {totalPages}
                   </div>
-                ))}
+                  <button
+                    className="btn btn-sm btn-outline-primary"
+                    onClick={goToNextPage}
+                    disabled={currentPage === totalPages}
+                  >
+                    Next
+                  </button>
+                </div>
               </div>
             </div>
           </div>
